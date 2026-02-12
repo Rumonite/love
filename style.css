@@ -190,3 +190,33 @@ body.open .card-content {
 body.open .subtitle {
     opacity: 0; /* Hide subtitle when open */
 }
+
+/* --- SIDE MEMORY PHOTOS --- */
+.side-photo {
+    position: fixed;
+    width: 150px; /* Adjust size of photos */
+    height: auto;
+    z-index: 1; /* Behind the letter (5) but above background */
+    border: 5px solid white; /* Polaroid effect */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    border-radius: 4px;
+    
+    /* Initial State (Hidden) */
+    opacity: 0;
+    transform: scale(0.8) translateY(50px);
+    transition: all 1s cubic-bezier(0.25, 1, 0.5, 1);
+    pointer-events: none; /* So they don't block clicks */
+}
+
+/* When Body is Open, Show Photos */
+body.open .side-photo {
+    opacity: 1;
+    transform: scale(1) translateY(0) rotate(var(--rotation));
+}
+
+/* Mobile Adjustment: Hide photos on small screens so text is readable */
+@media (max-width: 768px) {
+    .side-photo {
+        display: none;
+    }
+}

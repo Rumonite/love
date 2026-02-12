@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     
     /* --- CONFIGURATION START --- */
-    /* Edit your message here. Keep the backticks `` */
     
     const message = `
 Happy Valentines Day Lablab ko Abi!
@@ -17,30 +16,76 @@ No matter how far apart we might be, or how busy life gets, remember na ikaw lan
 I love you lablab, today and as always.
     `;
 
-    const signature = "Forever Yours,\nMitz Ignacio";
+    const signature = "Forever Yours,\nMitz";
+
+    // 1. ADD YOUR IMAGE FILENAMES HERE
+    // Make sure these match exactly what is in your 'images' folder
+    const lablabImages = [
+        'pic1.jpg', 
+        'pic2.jpg',
+        'pic3.jpg', 
+        'pic4.jpg',
+        // Add as many as you want, but 4-6 looks best
+    ];
 
     /* --- CONFIGURATION END --- */
 
 
-    // 1. Inject the text into the HTML
+    // 2. Inject the text
     const textElement = document.getElementById('dynamic-text');
     const sigElement = document.getElementById('dynamic-signature');
-    
-    // We trim the message to remove accidental whitespace at start/end
     textElement.textContent = message.trim();
     sigElement.textContent = signature;
 
 
-    // 2. Handle Opening/Closing
-    const coverTrigger = document.getElementById('cover-trigger');
+    // 3. GENERATE SIDE PHOTOS
     const body = document.body;
+    
+    lablabImages.forEach((imgName, index) => {
+        const img = document.createElement('img');
+        img.src = `images/${imgName}`; // Looks in the images folder
+        img.classList.add('side-photo');
+
+        // Math to scatter them left and right
+        // If index is even (0, 2, 4), put on Left. If odd (1, 3, 5), put on Right.
+        const isLeft = index % 2 === 0;
+        
+        // Random Position Calculation
+        const minTop = 10; // 10% from top
+        const maxTop = 80; // 80% from top
+        const randomTop = Math.floor(Math.random() * (maxTop - minTop) + minTop);
+        
+        // Random Horizontal Offset
+        const randomSide = Math.floor(Math.random() * 20 + 5); // 5% to 25% from edge
+        
+        // Random Rotation (-15deg to 15deg)
+        const randomRot = Math.floor(Math.random() * 30 - 15);
+
+        // Apply Styles
+        img.style.top = randomTop + '%';
+        if (isLeft) {
+            img.style.left = randomSide + '%';
+        } else {
+            img.style.right = randomSide + '%';
+        }
+        
+        // Store rotation in variable for CSS animation
+        img.style.setProperty('--rotation', randomRot + 'deg');
+
+        // Add to body
+        body.appendChild(img);
+    });
+
+
+    // 4. Handle Opening/Closing
+    const coverTrigger = document.getElementById('cover-trigger');
 
     coverTrigger.addEventListener('click', () => {
         body.classList.toggle('open');
     });
 
 
-    // 3. Create Falling Petals (Background Animation)
+    // 5. Falling Petals Effect
     const bgContainer = document.getElementById('background-effects');
     const symbols = ['🌷', '💜', '✨', '🟣'];
     const particleCount = 40;
@@ -48,26 +93,14 @@ I love you lablab, today and as always.
     function createPetal() {
         const petal = document.createElement('div');
         petal.classList.add('floating-petal');
-        
-        // Random Symbol
         petal.innerText = symbols[Math.floor(Math.random() * symbols.length)];
-        
-        // Random Position (0% to 100% width)
         petal.style.left = Math.random() * 100 + 'vw';
-        
-        // Random Animation Speed (5s to 15s)
         petal.style.animationDuration = Math.random() * 10 + 5 + 's';
-        
-        // Random Delay
         petal.style.animationDelay = Math.random() * 5 + 's';
-        
-        // Random Size
         petal.style.fontSize = Math.random() * 20 + 10 + 'px';
-
         bgContainer.appendChild(petal);
     }
 
-    // Initialize particles
     for (let i = 0; i < particleCount; i++) {
         createPetal();
     }
