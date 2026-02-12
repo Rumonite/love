@@ -4,20 +4,20 @@ document.addEventListener('DOMContentLoaded', () => {
     /* Edit your message here. Keep the backticks `` */
     
     const message = `
-I created this digital space just for you.
+Happy Valentines Day Lablab ko Abi!
 
-They say purple tulips symbolize royalty and admiration, and that is exactly how I see you. You are the queen of my world.
+They say purple tulips symbolize elegance and admiration, and that is how I see you in my eyes.
 
-I wanted to write you a letter that doesn't fade with time. A place where the flowers are always blooming and the message is always waiting for you.
+Gusto kita sulatan lablab ng letter that lasts, one that doesn't fade, get wet, or get damaged. I want it to be as resilient as how long we have been together.
 
-You bring so much light, warmth, and happiness into my life. Every moment with you is a memory I cherish.
+You've brought so much light, warmth, and happiness into my life. Every moment with you is a memory I cherish and wish to relive whenever I sleep.
 
-No matter how far apart we might be, or how busy life gets, remember that you are my favorite person.
+No matter how far apart we might be, or how busy life gets, remember na ikaw lang ang natatanging lablab ko.
 
-I love you, today and always.
+I love you lablab, today and as always.
     `;
 
-    const signature = "Forever Yours,\n[Your Name]";
+    const signature = "Forever Yours,\nMitz Ignacio";
 
     /* --- CONFIGURATION END --- */
 
