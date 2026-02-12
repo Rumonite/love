@@ -1,7 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    /* --- CONFIGURATION START --- */
-    
     const message = `
 Happy Valentines Day Lablab ko Abi!
 
@@ -18,45 +16,35 @@ I love you lablab, today and as always.
 
     const signature = "Forever Yours,\nMitz";
 
-    // 1. ADD YOUR IMAGE FILENAMES HERE
-    // Make sure these match exactly what is in your 'images' folder
     const lablabImages = [
         'pic1.jpg', 
         'pic2.jpg',
         'pic3.jpg', 
         'pic4.jpg',
-        // Add as many as you want, but 4-6 looks best
+        'pic5.jpg',
+        'pic6.jpg'
     ];
 
-    /* --- CONFIGURATION END --- */
-
-
-    // 2. Inject the text
     const textElement = document.getElementById('dynamic-text');
     const sigElement = document.getElementById('dynamic-signature');
     textElement.textContent = message.trim();
     sigElement.textContent = signature;
 
-
-    // 3. GENERATE SIDE PHOTOS
     const body = document.body;
     
     lablabImages.forEach((imgName, index) => {
         const img = document.createElement('img');
-        img.src = `images/${imgName}`; // Looks in the images folder
+        img.src = `images/${imgName}`; 
         img.classList.add('side-photo');
 
-        // Math to scatter them left and right
-        // If index is even (0, 2, 4), put on Left. If odd (1, 3, 5), put on Right.
         const isLeft = index % 2 === 0;
         
-        // Random Position Calculation
-        const minTop = 10; // 10% from top
-        const maxTop = 80; // 80% from top
+        const minTop = 10; 
+        const maxTop = 80; 
         const randomTop = Math.floor(Math.random() * (maxTop - minTop) + minTop);
         
         // Random Horizontal Offset
-        const randomSide = Math.floor(Math.random() * 20 + 5); // 5% to 25% from edge
+        const randomSide = Math.floor(Math.random() * 20 + 5);
         
         // Random Rotation (-15deg to 15deg)
         const randomRot = Math.floor(Math.random() * 30 - 15);
